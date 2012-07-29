@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/jquery.yping.autocomplete.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/jquery.yping.autocomplete.js"></script>
+	<script type="text/javascript">
+		$('#autocomplete').yping({
+			minchar: 3,
+			url: 'autocomplete.php',
+			tpl: "<h2><b>${id}</b></h2><h3>${value}</h3>",
+			dataPush: { 'per_page':10 },
+			onSelect:function(data){
+				$('#autocomplete').val(data.id);
+				// you can specify other elements
+			}
+		});
+	</script>
+</head>
+<body>
+<h1>YPing Autocomplete Example</h1>
+
+<input type="text" id="autocomplete" name="autocomplete"></input>
+
+</body>
+</html>
