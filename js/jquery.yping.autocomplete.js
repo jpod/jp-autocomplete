@@ -13,7 +13,7 @@ $('#id').yping({
 	dataPush: { 'per_page':10 },
 	onSelect:function(data){
 		$('#id').val(data.id);
-		// you can spesific other element
+		// you can spesific other elemen
 	}
 });
 */
