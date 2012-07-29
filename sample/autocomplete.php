@@ -805,10 +805,13 @@
 	
 	$keyword = $_POST['keyword'];
 	$per_page = $_POST['per_page'];
-	$page = $_POST['page'];	
+	$page = (($_POST['page'] > 0) ? $_POST['page'] : "1");
 	
 	$rows = "";
-	$n = 0;
+	$result = 0;
+	
+	$min_pos = ($page - 1) * $per_page;
+	$max_pos = $min_pos + $per_page;
 	
 	foreach ($contacts as &$contact)
 	{
@@ -816,15 +819,16 @@
 		
 		if ($pos !== false) 
 		{
-			$n++;
-			$rows .= json_encode($contact) . ",";
+			$result++;
+			
+			if ($result >= $min_pos && $result < $max_pos) $rows .= json_encode($contact) . ",";
 		}
 	}
 	
 	$rows = substr($rows, 0, strlen($rows) -1);
 	
-	echo "{\"result\": " . $n . ",
+	echo "{\"result\": " . $result . ",
 		\"per_page\": " . $per_page . ",
-		\"page\": " . (($page > 0) ? $page : "1") . ",
+		\"page\": " . $page . ",
 		\"rows\": [" . $rows . "]}";
 ?>
