@@ -1,0 +1,171 @@
+#jp-yping {
+	position:absolute;
+	margin:0;
+	padding:2px;
+	border:1px solid #CCCCCC;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	min-width:250px;
+	background: #fff;		
+	background: -moz-linear-gradient(#fff, #e5efd4);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e5efd4));
+	background: -webkit-linear-gradient(#fff, #e5efd4);    
+	background: -o-linear-gradient(#fff, #e5efd4);	
+	background: -ms-linear-gradient(#fff, #e5efd4);	
+	background: linear-gradient(#fff, #e5efd4);
+	font-size:11px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 	
+}
+
+#jp-yping-inner::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+#jp-yping-inner::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+#jp-yping-inner::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.yping-item{
+	cursor:pointer;
+}
+
+.yping-item h1,.yping-item h2,.yping-item h3,.yping-item h4,.yping-item h5{
+	font-weight:600;
+	margin:0;
+	font-size:11px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+.selected{
+	border:1px dotted #a3bae9!important;
+	background-color:#CCCCCC;
+	cursor:pointer;
+}
+
+#jp-yping-inner{
+	display:block;
+	padding:3px;
+	margin:0;
+	max-height:200px;
+	overflow:scroll;
+	overflow-x:hidden;
+}
+
+#jp-yping-ft{
+	display:block;
+	padding:3px;
+	min-height:20px;
+	background: #F4F4F4;		
+	background: -moz-linear-gradient(#F4F4F4, #e5efd4);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F4F4F4), to(#e5efd4));
+	background: -webkit-linear-gradient(#F4F4F4, #e5efd4);    
+	background: -o-linear-gradient(#F4F4F4, #e5efd4);	
+	background: -ms-linear-gradient(#F4F4F4, #e5efd4);	
+	background: linear-gradient(#F4F4F4, #e5efd4);
+}
+
+.obj-loading{
+	background-image:url(../images/loading.gif);
+	background-repeat:no-repeat;
+	background-position:center right;
+}
+
+.ft-res{
+	display:inline;
+	padding:3px;
+}
+.s-first,.s-prev,.s-next,.s-last{
+	border:1px solid #ccc;
+	padding:3px;
+	display:inline-block;
+	padding-left:5px;
+	padding-right:5px;
+	margin:3px;
+}
+
+.s-inp{
+	/*border:1px solid #ccc;*/
+	padding:0;
+	display:inline-block;
+	padding-left:5px;
+	padding-right:5px;
+	margin:3px;
+}
+
+.first{
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent; 
+	border-right:6px solid gray;
+	cursor:pointer;
+	position:relative;
+	display:inline-block;
+}
+
+.first:after{
+	content: "|";
+    position: absolute;
+    top: -11px;
+    left: -6px;
+	font-size:11px;
+	padding:3px;
+	color:gray;
+}
+
+.prev{
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent; 
+	border-right:6px solid gray;
+	cursor:pointer;
+	position:relative;
+	display:inline-block;
+}
+
+
+.next{
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent; 
+	border-left:6px solid gray;
+	cursor:pointer;
+	position:relative;
+	display:inline-block;
+}
+
+.last{
+	width: 0; 
+	height: 0; 
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent; 
+	border-left:6px solid gray;
+	cursor:pointer;
+	position:relative;
+	display:inline-block;
+}
+
+.last:after{
+	content: "|";
+    position: absolute;
+    top: -11px;
+    left: -3px;
+	font-size:11px;
+	padding:3px;
+	color:gray;
+}
+
+#jp-yping-ft input{
+	display:inline-block;
+	padding:1px;
+	cursor:pointer;
+	/*position:relative;*/
+}
