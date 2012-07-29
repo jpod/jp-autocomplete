@@ -113,19 +113,56 @@ $('#id').yping({
 											
 											$('.s-last').eq(0).click(function(){
 												try{
-												var push_page = { 'page': tot_page };
-												o.dataPush = $.extend(o.dataPush,push_page);
-												isTrigger = 1;
-												obj.trigger('keyup');
+												if($('#page').val()!=tot_page){
+													var push_page = { 'page': tot_page };
+													o.dataPush = $.extend(o.dataPush,push_page);
+													isTrigger = 1;
+													obj.trigger('keyup');
+												}
 												}catch(ex){ alert(ex.message); }
 											});
 											
-											$('.s-last').eq(0).click(function(){
+											$('.s-first').eq(0).click(function(){
 												try{
-												var push_page = { 'page': tot_page };
-												o.dataPush = $.extend(o.dataPush,push_page);
-												isTrigger = 1;
-												obj.trigger('keyup');
+												if($('#page').val()>1){
+													var push_page = { 'page': 1 };
+													o.dataPush = $.extend(o.dataPush,push_page);
+													isTrigger = 1;
+													obj.trigger('keyup');
+												}
+												}catch(ex){ alert(ex.message); }
+											});
+											
+											$('.s-next').eq(0).click(function(){
+												try{
+												if($('#page').val()!=tot_page){
+													var push_page = { 'page': (parseInt($('#page').val())+1) };
+													o.dataPush = $.extend(o.dataPush,push_page);
+													isTrigger = 1;
+													obj.trigger('keyup');
+												}
+												}catch(ex){ alert(ex.message); }
+											});
+											
+											$('.s-prev').eq(0).click(function(){
+												try{
+												if($('#page').val()>1){
+													var push_page = { 'page': (parseInt($('#page').val())-1) };
+													o.dataPush = $.extend(o.dataPush,push_page);
+													isTrigger = 1;
+													obj.trigger('keyup');
+												}
+												}catch(ex){ alert(ex.message); }
+											});
+											
+											$('#page').keyup(function(e){
+												try{
+												if($(this).val()>0 && $(this).val()<=tot_page){
+													var push_page = { 'page': $(this).val() };
+													o.dataPush = $.extend(o.dataPush,push_page);
+													isTrigger = 1;
+													obj.trigger('keyup');
+												}
 												}catch(ex){ alert(ex.message); }
 											});
 											
