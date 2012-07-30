@@ -20,3 +20,8 @@ How to use ?
 Requirement 
 -----------
 * [jquery tmpl](http://api.jquery.com/jquery.tmpl/)
+
+Demo
+----
+* [Demo jQuery Autocomplete] (http://desamedia.com/jp-autocomplete/)
+
