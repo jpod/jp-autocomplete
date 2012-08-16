@@ -805,7 +805,7 @@
 	
 	$keyword = $_POST['keyword'];
 	$per_page = $_POST['per_page'];
-	$page = (($_POST['page'] > 0) ? $_POST['page'] : "1");
+	$page = (isset($_POST['page']) ? $_POST['page'] : "1");
 	
 	$rows = "";
 	$result = 0;
