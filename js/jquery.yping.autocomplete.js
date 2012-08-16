@@ -90,7 +90,7 @@ $('#id').yping({
 											ui_yping.css({
 												display: 'block',
 												zIndex: 9999,
-												left: 0, //obj.offset().left,
+												//left: 0, //obj.offset().left,
 												top: obj.offsetTop
 											});
 											ui_yping.append("<div id='jp-yping-inner'>");
