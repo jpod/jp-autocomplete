@@ -85,14 +85,23 @@ $('#id').yping({
 										success: function(response){
 											obj.removeClass("obj-loading");
 											$('#jp-yping').remove();
-											obj.after("<div id='jp-yping'>");
+											try{
+											$('body').append("<div id='jp-yping'>");
+											}catch(e){ alert(e.message); }
 											var ui_yping = $('#jp-yping');
+											var offset = $(obj).offset();
+											
+											try{
+											
 											ui_yping.css({
 												display: 'block',
 												zIndex: 9999,
-												//left: 0, //obj.offset().left,
-												top: obj.offsetTop
+												left: obj.offset().left,
+												top: obj.offset().top+obj.height()+20
 											});
+											}catch(e){ alert(e.message); }
+											
+											
 											ui_yping.append("<div id='jp-yping-inner'>");
 											ui_yping.append("<div id='jp-yping-ft'>");
 											var ui_yping_inner = $('#jp-yping-inner');
