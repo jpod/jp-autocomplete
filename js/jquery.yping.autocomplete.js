@@ -12,7 +12,7 @@ $('#id').yping({
 	tpl: "<h2><b>${id}</b></h2><h3>${value}</h3>",
 	dataPush: { 'per_page':10 },
 	source:function(){
-	    var customData = { 'paramstatic':'jessica','paramelement':$('#idelement').val() };
+	    var customData = { 'param_static':'jessica','param_element':$('#idelement').val() };
 	    return customData;
 	}
 	,
