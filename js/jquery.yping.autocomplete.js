@@ -11,6 +11,11 @@ $('#id').yping({
 	url: 'url_specified',
 	tpl: "<h2><b>${id}</b></h2><h3>${value}</h3>",
 	dataPush: { 'per_page':10 },
+	source:function(){
+	    var customData = { 'paramstatic':'jessica','paramelement':$('#idelement').val() };
+	    return customData;
+	}
+	,
 	onSelect:function(data){
 		$('#id').val(data.id);
 		// you can spesific other elemen
@@ -19,17 +24,16 @@ $('#id').yping({
 */
 
 (function( $ ){
-		
-	
+
 		$.fn.yping = function(options,method) {
-			
-			
 			
 			var defaults = {
 				minchar: 2, // default
 				url: null,
-				dataPush:[],
-				tpl: "<h2><b>${nip}</b></h2><h3>${nama}</h3>",
+				dataPush: null,
+				tpl:'',
+				errorImage: '../images/no_photo.png',
+				source:function(){},
 				onSelect:function(data){ },
 				onClose:function(id){ },
 				onClick: function(id){ },
@@ -56,22 +60,20 @@ $('#id').yping({
 						}
 				  });
 				  
-				  /*
-				  $('#jp-yping-ft').on('click',function(e){
-					e.stopPropagation();
-				  });
-				  */				  
-				  
 				  $(this).on({
-					'keyup':function(ev){
+					'click': function(){
+						//alert($(this).offset().left);
+					},
+				    'keyup':function(ev){
 						
 						if(ev.which!=13){
+							if(isTrigger==0) $('#page').val('');
 							if($nLength!=$(this).val().length || isTrigger==1){
 								isTrigger = 0;
 								
 								$nLength = $(this).val().length;
 								if($(this).val().length>=o.minchar){
-								
+								    o.dataPush = $.extend(o.dataPush,o.source());
 									var place = o.dataPush;
 									var places = { 'keyword': obj.val() };
 									var dataPush_ = $.extend(place,places);
@@ -83,7 +85,7 @@ $('#id').yping({
 										url: o.url,
 										data: dataPush_,
 										success: function(response){
-											obj.removeClass("obj-loading");
+											//obj.removeClass("obj-loading");
 											$('#jp-yping').remove();
 											try{
 											$('body').append("<div id='jp-yping'>");
@@ -100,8 +102,6 @@ $('#id').yping({
 												top: obj.offset().top+obj.height()+20
 											});
 											}catch(e){ alert(e.message); }
-											
-											
 											ui_yping.append("<div id='jp-yping-inner'>");
 											ui_yping.append("<div id='jp-yping-ft'>");
 											var ui_yping_inner = $('#jp-yping-inner');
@@ -119,6 +119,7 @@ $('#id').yping({
 											$("<div class='s-inp'>Page <input type='text' id='page' value='"+cur_page+"' size=3 /> of "+ tot_page +"</div>").appendTo(ui_yping_ft);
 											$("<div class='s-next'><div class='next'></div></div>").appendTo(ui_yping_ft);
 											$("<div class='s-last'><div class='last'></div></div>").appendTo(ui_yping_ft);
+											
 											
 											$('.s-last').eq(0).click(function(){
 												try{
@@ -177,6 +178,11 @@ $('#id').yping({
 											
 											try{
 											$.tmpl('<div class="yping-item">'+o.tpl+'</div>',$obj_json.rows).appendTo(ui_yping_inner); 
+											$("#jp-yping-inner img").each(function(index,item){
+												$(item).error(function(){
+													$(item).attr('src',o.errorImage);
+												});
+											});
 											}catch(xx){ alert(xx.message); }
 											
 											$('.yping-item').each(function(index,item){
@@ -243,7 +249,6 @@ $('#id').yping({
 								break;
 							}
 							}catch(x){ alert('error is :'+x.message); }
-							//e.stopPropagation();
 					}
 				  });
 				  
